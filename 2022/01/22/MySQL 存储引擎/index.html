@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives | Hexo</title>
+  <title>Storage Engines | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/index.html">
+  <meta name="description" content="存储引擎六种存储引擎CSV、Memory、ARCHIVE、MRG、MYISAM、InnoDB. 类别 事务安全型：支持事务，比如 InnoDB。   非事务安全型：不支持事务 ，比如Memory、MYIASM。  主要的存储引擎&#x2F;表类型特点    特点 MYISAM InnoDB Memory ARCHIVE    批量插入的速度 高 低 高 非常高   事务安全  支持     全文索引 支持">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storage Engines">
+<meta property="og:url" content="http://example.com/2022/01/22/MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="存储引擎六种存储引擎CSV、Memory、ARCHIVE、MRG、MYISAM、InnoDB. 类别 事务安全型：支持事务，比如 InnoDB。   非事务安全型：不支持事务 ，比如Memory、MYIASM。  主要的存储引擎&#x2F;表类型特点    特点 MYISAM InnoDB Memory ARCHIVE    批量插入的速度 高 低 高 非常高   事务安全  支持     全文索引 支持">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-01-22T09:09:23.648Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,63 +155,182 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL 存储引擎" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" class="archive-article-date">
-  	<time datetime="2022-01-22T05:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/">下一个排序</a>
+    <h1 class="article-title" itemprop="name">
+      Storage Engines
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+        
+        <a href="/2022/01/22/MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="archive-article-date">
   	<time datetime="2022-01-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/">Transaction</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h1><h2 id="六种存储引擎"><a href="#六种存储引擎" class="headerlink" title="六种存储引擎"></a>六种存储引擎</h2><p>CSV、Memory、ARCHIVE、MRG、MYISAM、InnoDB.</p>
+<h2 id="类别"><a href="#类别" class="headerlink" title="类别"></a>类别</h2><blockquote>
+<p>事务安全型：支持事务，比如 InnoDB。</p>
+</blockquote>
+<blockquote>
+<p>非事务安全型：不支持事务 ，比如Memory、MYIASM。</p>
+</blockquote>
+<p>主要的存储引擎/表类型特点</p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>MYISAM</th>
+<th>InnoDB</th>
+<th>Memory</th>
+<th>ARCHIVE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>批量插入的速度</td>
+<td>高</td>
+<td>低</td>
+<td>高</td>
+<td>非常高</td>
+</tr>
+<tr>
+<td>事务安全</td>
+<td></td>
+<td>支持</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>全文索引</td>
+<td>支持</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>锁机制</td>
+<td>表锁</td>
+<td>行锁</td>
+<td>表锁</td>
+<td>行锁</td>
+</tr>
+<tr>
+<td>存储限制</td>
+<td>没有</td>
+<td>64TB</td>
+<td>有</td>
+<td>没有</td>
+</tr>
+<tr>
+<td>B树索引</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>哈希索引</td>
+<td></td>
+<td>支持</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>集群索引</td>
+<td></td>
+<td>支持</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>数据缓存</td>
+<td></td>
+<td>支持</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>索引缓存</td>
+<td>支持</td>
+<td>支持</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>数据可压缩</td>
+<td>支持</td>
+<td></td>
+<td></td>
+<td>支持</td>
+</tr>
+<tr>
+<td>空间使用</td>
+<td>低</td>
+<td>高</td>
+<td>N/A</td>
+<td>非常低</td>
+</tr>
+<tr>
+<td>内存使用</td>
+<td>低</td>
+<td>高</td>
+<td>中等</td>
+<td>低</td>
+</tr>
+<tr>
+<td>支持外键</td>
+<td></td>
+<td>支持</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="细节说明"><a href="#细节说明" class="headerlink" title="细节说明"></a>细节说明</h2><ol>
+<li>MyISAM不支持事务，也不支持外键，但其访问速度快，对事务完整性没有要求。</li>
+<li>InnoDB存储引擎提供了具有提交、回滚和崩溃恢复能力的事务安全，但是比起MyISAM存储引擎，InnoDB写的处理效率差一些并且会占用更多的磁盘空间以保留数据和索引。</li>
+<li>MEMORY存储引擎使用存在内存中的内容来创建表。每个MEMORY只实际对应一个磁盘文件。MEMORY类型的表访问非常快，因为它的数据是放在内存中的，并且默认使用HASH索引。但是一旦服务关闭，表中数据就会丢失，表的结构还在。</li>
+</ol>
+<h2 id="引擎选择"><a href="#引擎选择" class="headerlink" title="引擎选择"></a>引擎选择</h2><ol>
+<li>不需要事务操作，处理的只是基本的CRUD操作，那么MyISAM是最优选择，速度快。</li>
+<li>需要事务操作，选择InnoDB。</li>
+<li>MEMORY存储引擎就是将数据存储在内存中，由于没有磁盘I/O的等待，速度极快。但是由于是内存存储引擎，所做的任何修改在服务器重启后过都将消失（经典用法：用户的在线状态）。</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -218,122 +342,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/22/MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/22/MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/" class="archive-article-date">
-  	<time datetime="2022-01-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Transaction
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/01/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/22/MySQL%20%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E/">Storage Engines</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2022-01-21T15:15:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/">我的第一篇博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">新手</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/21/hello-world/" class="archive-article-date">
-  	<time datetime="2022-01-21T15:09:28.829Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/21/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -356,8 +473,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
