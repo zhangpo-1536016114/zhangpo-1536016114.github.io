@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>下一个排序 | Hexo</title>
+  <title>Tag: MySQL | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="下一个排列题目描述实现获取 下一个排列 的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列（即，组合出下一个更大的整数）。 如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。 必须 原地  修改，只允许使用额外常数空间。 思路 1.我们希望下一个数比当前数大，这样才满足下一个排序的定义。因此只需将后面的【大数】与前面的【小数交换】，就能得到一个更大的数。比如 1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="下一个排序">
-<meta property="og:url" content="http://example.com/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/tags/MySQL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="下一个排列题目描述实现获取 下一个排列 的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列（即，组合出下一个更大的整数）。 如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。 必须 原地  修改，只允许使用额外常数空间。 思路 1.我们希望下一个数比当前数大，这样才满足下一个排序的定义。因此只需将后面的【大数】与前面的【小数交换】，就能得到一个更大的数。比如 1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-22T05:37:00.000Z">
-<meta property="article:modified_time" content="2022-01-22T06:20:36.206Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -154,189 +150,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-下一个排列" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      下一个排序
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2022-01-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/">事务</a>
     </h1>
   
 
-        
-        <a href="/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" class="archive-article-date">
-  	<time datetime="2022-01-22T05:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="下一个排列"><a href="#下一个排列" class="headerlink" title="下一个排列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-permutation">下一个排列</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>实现获取 下一个排列 的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列（即，组合出下一个更大的整数）。</p>
-<p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
-<p>必须 <em>原地</em>  修改，只允许使用额外常数空间。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
-<li><p>1.我们希望下一个数比当前数大，这样才满足下一个排序的定义。因此只需将<strong>后面的【大数】与前面的【小数交换】</strong>，就能得到一个更大的数。比如 <code>123456</code>，将<code>5</code>和<code>6</code>交换就能得到一个更大的数 <code>123465</code>。</p>
-</li>
-<li><p>2.我们还希望下一个数<strong>增加的幅度尽可能的小</strong>，这样才满足“下一个排列与当前排列紧邻“的要求。为了满足这个要求，我们需要：</p>
-</li>
-</ul>
-<blockquote>
-<p>1.在<strong>尽可能靠右的低位</strong>进行交换，需要<strong>从后向前</strong>查找</p>
-</blockquote>
-<blockquote>
-<p>2.将一个 <strong>尽可能小的「大数」</strong> 与前面的「小数」交换。比如     <code>123465</code>，下一个排列应该把 <code>5</code> 和 <code>4</code> 交换而不是把 <code>6</code> 和 <code>4</code> 交换</p>
-</blockquote>
-<blockquote>
-<p>3.将「大数」换到前面后，需要将「大数」后面的所有数重置为升序，升序排列就是最小的排列。以<code>123465</code>为例：首先按照上一步，交换<code>5</code>和<code>4</code>，得到<code>123564</code>；然后需要将<code>5</code>之后的数重置为升序，得到<code>123546</code>。显然 <code>123546 </code>比<code>123564</code> 更小，<code>123546</code>就是 <code>123465</code> 的下一个排列</p>
-</blockquote>
-<h2 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h2><ul>
-<li><p>1.<strong>从后向前</strong>查找第一个<strong>相邻升序</strong>的元素对 <code>(i,j)</code>，满足 <code>A[i]   &lt; A[j]</code>。此时 <code>[j,end)</code> 必然是降序</p>
-</li>
-<li><p>2.在 <code>[j,end)</code> 从后向前查找第一个满足 <code>A[i] &lt; A[k]</code> 的 <code>k</code>。<code>A[i]</code>、<code>A[k]</code> 分别就是上文所说的「小数」、「大数」<br>将 <code>A[i]</code> 与<code>A[k]</code>交换</p>
-</li>
-<li><p>3.将 <code>A[i]</code> 与 <code>A[k]</code> 交换</p>
-</li>
-<li><p>4.可以断定这时 <code>[j,end)</code> 必然是降序，逆置 <code>[j,end)</code>，使其升序</p>
-</li>
-<li><p>5.如果在<code>步骤 1</code> 找不到符合的相邻元素对，说明当前 <code>[begin,end)</code> 为一个降序顺序，则直接跳到<code>步骤 4</code></p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = nums.length - <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[i + <span class="number">1</span>])&#123;</span><br><span class="line">            -- i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> j = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[j])&#123;</span><br><span class="line">                -- j;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(nums,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(nums,i + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = a[i];</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        a[j] = t;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> end = a.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(start &lt; end)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = a[start];</span><br><span class="line">            a[start] = a[end];</span><br><span class="line">            a[end] = t;</span><br><span class="line">            ++ start;</span><br><span class="line">            --end;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-<p> 参考：</p>
-<p>作者：imageslr<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-permutation/solution/xia-yi-ge-pai-lie-suan-fa-xiang-jie-si-lu-tui-dao-/">https://leetcode-cn.com/problems/next-permutation/solution/xia-yi-ge-pai-lie-suan-fa-xiang-jie-si-lu-tui-dao-/</a></p>
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
   
   
-    <a href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">事务</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -359,9 +226,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

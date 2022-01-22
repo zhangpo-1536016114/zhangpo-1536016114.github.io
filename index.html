@@ -174,17 +174,34 @@
       
         <h1 id="下一个排列"><a href="#下一个排列" class="headerlink" title="下一个排列"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/next-permutation">下一个排列</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a><strong>题目描述</strong></h2><p>实现获取 下一个排列 的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列（即，组合出下一个更大的整数）。</p>
 <p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
-<p>必须 <em>原地</em> 修改，只允许使用额外常数空间。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>1.我们希望下一个数比当前数大，这样才满足下一个排序的定义。因此只需将<strong>后面的【大数】与前面的【小数交换】</strong>，就能得到一个更大的数。比如 <code>123456</code>，将<code>5</code>和<code>6</code>交换就能得到一个更大的数 <code>123465</code>。</p>
-<p>2.我们还希望下一个数<strong>增加的幅度尽可能的小</strong>，这样才满足“下一个排列与当前排列紧邻“的要求。为了满足这个要求，我们需要：</p>
-<p>​         1.在<strong>尽可能靠右的低位</strong>进行交换，需要<strong>从后向前</strong>查找</p>
-<p>​        2.将一个 <strong>尽可能小的「大数」</strong> 与前面的「小数」交换。比如     <code>123465</code>，下一个排列应该把 <code>5</code> 和 <code>4</code> 交换而不是把 <code>6</code> 和 <code>4</code> 交换</p>
-<p>​       3.将「大数」换到前面后，需要将「大数」后面的所有数重置为升序，升序排列就是最小的排列。以<code>123465</code>为例：首先按照上一步，交换<code>5</code>和<code>4</code>，得到<code>123564</code>；然后需要将<code>5</code>之后的数重置为升序，得到<code>123546</code>。显然 <code>123546 </code>比<code>123564</code> 更小，<code>123546</code>就是 <code>123465</code> 的下一个排列</p>
-<h2 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h2><p>1.<strong>从后向前</strong>查找第一个<strong>相邻升序</strong>的元素对 <code>(i,j)</code>，满足 <code>A[i]   &lt; A[j]</code>。此时 <code>[j,end)</code> 必然是降序</p>
-<p>2.在 <code>[j,end)</code> 从后向前查找第一个满足 <code>A[i] &lt; A[k]</code> 的 <code>k</code>。<code>A[i]</code>、<code>A[k]</code> 分别就是上文所说的「小数」、「大数」<br>将 <code>A[i]</code> 与<code>A[k]</code>交换</p>
-<p>3.将 <code>A[i]</code> 与 <code>A[k]</code> 交换</p>
-<p>4.可以断定这时 <code>[j,end)</code> 必然是降序，逆置 <code>[j,end)</code>，使其升序</p>
-<p>5.如果在<code>步骤 1</code> 找不到符合的相邻元素对，说明当前 <code>[begin,end)</code> 为一个降序顺序，则直接跳到<code>步骤 4</code></p>
+<p>必须 <em>原地</em>  修改，只允许使用额外常数空间。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ul>
+<li><p>1.我们希望下一个数比当前数大，这样才满足下一个排序的定义。因此只需将<strong>后面的【大数】与前面的【小数交换】</strong>，就能得到一个更大的数。比如 <code>123456</code>，将<code>5</code>和<code>6</code>交换就能得到一个更大的数 <code>123465</code>。</p>
+</li>
+<li><p>2.我们还希望下一个数<strong>增加的幅度尽可能的小</strong>，这样才满足“下一个排列与当前排列紧邻“的要求。为了满足这个要求，我们需要：</p>
+</li>
+</ul>
+<blockquote>
+<p>1.在<strong>尽可能靠右的低位</strong>进行交换，需要<strong>从后向前</strong>查找</p>
+</blockquote>
+<blockquote>
+<p>2.将一个 <strong>尽可能小的「大数」</strong> 与前面的「小数」交换。比如     <code>123465</code>，下一个排列应该把 <code>5</code> 和 <code>4</code> 交换而不是把 <code>6</code> 和 <code>4</code> 交换</p>
+</blockquote>
+<blockquote>
+<p>3.将「大数」换到前面后，需要将「大数」后面的所有数重置为升序，升序排列就是最小的排列。以<code>123465</code>为例：首先按照上一步，交换<code>5</code>和<code>4</code>，得到<code>123564</code>；然后需要将<code>5</code>之后的数重置为升序，得到<code>123546</code>。显然 <code>123546 </code>比<code>123564</code> 更小，<code>123546</code>就是 <code>123465</code> 的下一个排列</p>
+</blockquote>
+<h2 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h2><ul>
+<li><p>1.<strong>从后向前</strong>查找第一个<strong>相邻升序</strong>的元素对 <code>(i,j)</code>，满足 <code>A[i]   &lt; A[j]</code>。此时 <code>[j,end)</code> 必然是降序</p>
+</li>
+<li><p>2.在 <code>[j,end)</code> 从后向前查找第一个满足 <code>A[i] &lt; A[k]</code> 的 <code>k</code>。<code>A[i]</code>、<code>A[k]</code> 分别就是上文所说的「小数」、「大数」<br>将 <code>A[i]</code> 与<code>A[k]</code>交换</p>
+</li>
+<li><p>3.将 <code>A[i]</code> 与 <code>A[k]</code> 交换</p>
+</li>
+<li><p>4.可以断定这时 <code>[j,end)</code> 必然是降序，逆置 <code>[j,end)</code>，使其升序</p>
+</li>
+<li><p>5.如果在<code>步骤 1</code> 找不到符合的相邻元素对，说明当前 <code>[begin,end)</code> 为一个降序顺序，则直接跳到<code>步骤 4</code></p>
+</li>
+</ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = nums.length - <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[i + <span class="number">1</span>])&#123;</span><br><span class="line">            -- i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> j = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; nums[i] &gt;= nums[j])&#123;</span><br><span class="line">                -- j;</span><br><span class="line">            &#125;</span><br><span class="line">            swap(nums,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        reverse(nums,i + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> i,<span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> t = a[i];</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        a[j] = t;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span>[] a,<span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> end = a.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(start &lt; end)&#123;</span><br><span class="line">            <span class="keyword">int</span> t = a[start];</span><br><span class="line">            a[start] = a[end];</span><br><span class="line">            a[end] = t;</span><br><span class="line">            ++ start;</span><br><span class="line">            --end;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p> 参考：</p>
@@ -202,6 +219,168 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/01/22/%E4%B8%8B%E4%B8%80%E4%B8%AA%E6%8E%92%E5%88%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySQL 事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/">事务</a>
+    </h1>
+  
+
+        
+        <a href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2022-01-21T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><h2 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h2><p> 事务用于保证数据的一致性，由一组相关的DML语句组成。该语句要么全部成功，要么全部失败。</p>
+<h2 id="事务和锁"><a href="#事务和锁" class="headerlink" title="事务和锁"></a>事务和锁</h2><p>当执行事务操作时，MySQL会在表上加锁，防止其他用户改表的数据。</p>
+<h2 id="事务基本操作"><a href="#事务基本操作" class="headerlink" title="事务基本操作"></a>事务基本操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">start</span> transaction <span class="comment">--开始事务</span></span><br><span class="line"><span class="keyword">savepoint</span> 保存点名 <span class="comment">--设置保存点</span></span><br><span class="line"><span class="keyword">rollback</span> 保存点名 <span class="comment">--回退事务</span></span><br><span class="line"><span class="keyword">rollback</span> <span class="comment">--回退全部事务</span></span><br><span class="line"><span class="keyword">commit</span> <span class="comment">--提交事务，所有操作生效，不能回退</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="细节注意事项"><a href="#细节注意事项" class="headerlink" title="细节注意事项"></a>细节注意事项</h2><ul>
+<li>如果不开始事务，默认情况下，DML操作是自动提交的，不能回滚。</li>
+<li>如果开始一个事务，你没有创建保存点。你可以执行rollback，默认回退到事务开始之前。</li>
+<li>在事务提交前，可以创建多个保存点。</li>
+<li>在事务提交前，选择回退任意一个保存点。</li>
+<li>innodb引擎支持事务机制，myisam不支持。</li>
+<li>开始事务：start transaction 或 set autocommit = off。</li>
+</ul>
+<h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><h3 id="什么是隔离级别？"><a href="#什么是隔离级别？" class="headerlink" title="什么是隔离级别？"></a>什么是隔离级别？</h3><p>多个连接开启各自事务操作数据库中数据时，数据库系统要负责隔离操作，以保证各个连接在获取数据时的准确性。</p>
+<h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3><p>当一个事务读取另一个事务尚未提交的修改时，此时发生脏读。</p>
+<h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3><p>同一查询在同一事务中多次进行，由于其他提交事务所做的修改或删除，每次返回不同的结果集，此时发生不可重复读。</p>
+<h3 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h3><p>同一查询在同一事务中多次进行，由于其他提交事务所做的插入操作，每次返回不同结果集，此时发生幻读。</p>
+<h3 id="隔离级别-1"><a href="#隔离级别-1" class="headerlink" title="隔离级别"></a>隔离级别</h3><table>
+<thead>
+<tr>
+<th>MySQL隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+<th>加锁读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>读未提交（Read uncommited）</td>
+<td>T</td>
+<td>T</td>
+<td>T</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>读已提交（Read commited）</td>
+<td>F</td>
+<td>T</td>
+<td>T</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>可重复读（Repeatable read）</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>不加锁</td>
+</tr>
+<tr>
+<td>可串行化（Serializable）</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+<td>加锁</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明：T可能出现  F不会出现</p>
+</blockquote>
+<h3 id="设置隔离"><a href="#设置隔离" class="headerlink" title="设置隔离"></a>设置隔离</h3><ul>
+<li>查看当前会话隔离级别</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@tx</span>_isolation;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>查看系统当前隔离级别</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.tx_isolation;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>设置当前会话隔离级别</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> session transaction isolation level repeatable read;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>设置系统当前隔离级别</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> transaction isolation level repeatable read;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>MySQL默认的事务隔离级别是repeatable read ，一般情况下，没有特殊要求，没有必要修改（已经可以满足大部分项目需求）。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/01/22/MySQL%20%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
         </p>
       
 
@@ -475,6 +654,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">新手</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
             
             <div class="clearfix"></div>
