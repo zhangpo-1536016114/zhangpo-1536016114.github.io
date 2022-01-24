@@ -16,7 +16,7 @@
 <meta property="og:description" content="事务什么是事务？ 事务用于保证数据的一致性，由一组相关的DML语句组成。该语句要么全部成功，要么全部失败。 事务和锁当执行事务操作时，MySQL会在表上加锁，防止其他用户改表的数据。 事务基本操作12345start transaction --开始事务savepoint 保存点名 --设置保存点rollback 保存点名 --回退事务rollback --回退全部事务commit --提交事务，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-21T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-01-22T08:44:14.284Z">
+<meta property="article:modified_time" content="2022-01-22T12:08:33.450Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
@@ -187,6 +187,30 @@
 <li>innodb引擎支持事务机制，myisam不支持。</li>
 <li>开始事务：start transaction 或 set autocommit = off。</li>
 </ul>
+<h2 id="ACID"><a href="#ACID" class="headerlink" title="ACID"></a>ACID</h2><ul>
+<li>Atomicity原子性</li>
+</ul>
+<blockquote>
+<p>一个事务中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复到事务开始前的状态，就像这个事务从来没有被执行一样。</p>
+</blockquote>
+<ul>
+<li>Consistency一致性</li>
+</ul>
+<blockquote>
+<p>在事务开始之前和事务结束之后，数据库的完整性没有被破坏。这表示写入的资料必须完全符合所有的预设规则，这包含资料的精确性、串联性以及后续数据库可以自发性地完成预定的工作。</p>
+</blockquote>
+<ul>
+<li>Isolation隔离性</li>
+</ul>
+<blockquote>
+<p>数据库允许多个并发的事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。</p>
+</blockquote>
+<ul>
+<li>Durability持久性</li>
+</ul>
+<blockquote>
+<p>事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</p>
+</blockquote>
 <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><h3 id="什么是隔离级别？"><a href="#什么是隔离级别？" class="headerlink" title="什么是隔离级别？"></a>什么是隔离级别？</h3><p>多个连接开启各自事务操作数据库中数据时，数据库系统要负责隔离操作，以保证各个连接在获取数据时的准确性。</p>
 <h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3><p>当一个事务读取另一个事务尚未提交的修改时，此时发生脏读。</p>
 <h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3><p>同一查询在同一事务中多次进行，由于其他提交事务所做的修改或删除，每次返回不同的结果集，此时发生不可重复读。</p>
@@ -372,7 +396,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          下一个排序
+          NextPertumation
         
       </div>
     </a>
@@ -510,6 +534,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">java database</a>
               </li>
             
             <div class="clearfix"></div>
